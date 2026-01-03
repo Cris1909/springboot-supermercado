@@ -50,5 +50,7 @@ public class SucursalService implements ISucursalService {
         if (!repo.existsById(id)) {
             throw new NotFoundException("Sucursal no encontrada para eliminar");
         }
+
+        repo.deleteById(id);
     }
 }
