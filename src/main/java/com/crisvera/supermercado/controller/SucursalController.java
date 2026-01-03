@@ -23,17 +23,17 @@ public class SucursalController {
     }
 
     @PostMapping
-    public ResponseEntity<SucursalDTO> crearSucursal(SucursalDTO dto) {
+    public ResponseEntity<SucursalDTO> crearSucursal(@RequestBody SucursalDTO dto) {
         SucursalDTO created = sucursalService.crearSucursal(dto);
         return ResponseEntity
-                .created(URI.create("/api/sucursal " + created.getId() ))
+                .created(URI.create("/api/sucursales " + created.getId() ))
                 .body(created);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<SucursalDTO> actualizarSucursal(
             @PathVariable Long id,
-            SucursalDTO dto
+            @RequestBody SucursalDTO dto
     ) {
         SucursalDTO created = sucursalService.actualizarSucursal(id, dto);
         return ResponseEntity.ok(created);
